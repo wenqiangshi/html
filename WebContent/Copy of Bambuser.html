@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+<!-- 删除默认的苹果工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-capable" content="no">
+<!-- 在web app应用下状态条（屏幕顶部条）的颜色 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!-- 禁止了把数字转化为拨号链接 -->
+<meta name="format-detection" content="telephone=no">
+<!-- 浏览网站时的小图标 -->
+<link rel="shortcut icon" href="mediaelement-2.16.4/build/icon.png" type="/image/x-icon">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery.mobile-1.4.5.js"></script>
+<link rel="stylesheet" type="text/css" href="images/common.css"/>
+<script>
+function getQueryString(name) {
+	    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) {
+	        return unescape(r[2]);
+	    }
+	    return null;
+	}
+function load(){
+	var height=window.screen.height;
+	//alert(height);
+	if(height == "568"){
+		$("#videostate").addClass("videostateiPhone5");
+		$("#bgimg").addClass("bgimgiPhone5");
+		$("#download").addClass("downloadiPhone5");
+	}else if(height == "667"){ 
+		//alert("iPhone6");
+		$("#videostate").addClass("videostateiPhone6");
+		$("#bgimg").addClass("bgimgiPhone6");
+		$("#download").addClass("downloadiPhone6");
+	}else if(height == "736"){
+		//alert("iPhone6 Plus");
+		$("#videostate").addClass("videostateiPhone6P");
+		$("#bgimg").addClass("bgimgiPhone6P");
+		$("#download").addClass("downloadiPhone6P");
+	}
+}
+</script>
+  <style type="text/css">
+      .videostateiPhone5{height:455px!important;min-height:455px;}
+      .videostateiPhone6{height:546px!important;min-height:546px;}
+      .videostateiPhone6P{height:607px!important;min-height:607px;}
+      .bgimgiPhone5{height:52px!important;min-height:52px;background-image: url(images/background1.png);}
+      .bgimgiPhone6{height:54px!important;min-height:54px;background-image: url(images/background2.png);}
+      .bgimgiPhone6P{height:62px!important;min-height:62px;background-image: url(images/background3.png);}
+      .downloadiPhone5{height:40px!important;min-height:40px;background-image: url(images/download1.png);padding-top:4px;margin-left:212px;}
+      .downloadiPhone6{height:45px!important;min-height:45px;background-image: url(images/download3.png);padding-top:4px;margin-left:268px;}
+      .downloadiPhone6P{height:50px!important;min-height:50px;background-image: url(images/download3.png);padding-top:4px;margin-left:300px;}
+#bgimg {
+ width: 100%;
+ position: fixed;
+ bottom: 0px;
+ text-align: center;
+ _POSITION: absolute;/*兼容IE6*/
+ _TOP: expression(offsetParent.scrollTop+document.documentElement.clientHeight-this.offsetHeight);/*兼容IE6*/
+}
+   </style>
+</head>
+
+<body onload="load();" style="overflow-x:hidden;overflow-y:auto;">
+<div data-role="page" data-theme="d">
+  <div data-role="content" style="height:auto!important;min-height:auto;overflow:hidden;">
+	<div id="videostate" style="margin:0px;padding:0px;width:100%;overflow:hidden;">
+		<div class="video" id="HLSPlayer" style="background:#000000; width:100%;height:100%;">
+		<SCRIPT LANGUAGE=JavaScript>
+		var vID        = ""; 
+		var vWidth     = "100%";                //鎾斁鍣ㄥ搴﹁缃�
+		var vHeight    = "100%";                   //鎾斁鍣ㄥ搴﹁缃�
+		var vPlayer    = "HLSPlayer.swf?v=2.5"; //鎾斁鍣ㄦ枃浠�
+		var vHLSset    = "HLS.swf";             //HLS閰嶇疆
+		var vFile      = "CuSunV2set.xml";
+		var vPic       = "";    //瑙嗛缂╃暐鍥�
+		var vCssurl    = "images/mini.css";     //绉诲姩绔疌SS搴旂敤鏂囦欢
+		var date;
+		$.ajax({
+		    type: "post",
+		    async: false,
+		    url: "http://192.168.1.108:8080/LiangZiServer/liveShareId",
+		    dataType: "json",
+		    data:{"liveShareId":getQueryString("live_id")},
+		    success: function(data) {
+		    	date=data.liveHlsPlayUrl;
+		    }
+		});
+		var vHLSurl = date;
+		</SCRIPT> 
+		<script type="text/javascript" src="js/hls.min.js"></script>
+  </div>
+</div>
+  <div data-role="footer" data-position="inline" widht="100%" data-fullscreen="true" data-theme="b" >
+  <div id="bgimg">
+	    <a href="http://www.baidu.com"  target="_blank">
+	    	<img src="images/download1.png"  id="download"/>
+	    </a>
+  </div>
+</div>
+</body>
+</html>
