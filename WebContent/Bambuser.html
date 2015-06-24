@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" /> 
+<!-- 删除默认的苹果工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-capable" content="no">
+<!-- 在web app应用下状态条（屏幕顶部条）的颜色 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!-- 禁止了把数字转化为拨号链接 -->
+<meta name="format-detection" content="telephone=no">
+<!-- 浏览网站时的小图标 -->
+<link rel="shortcut icon" href="mediaelement-2.16.4/build/icon.png" type="/image/x-icon">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery.mobile-1.4.5.js"></script>
+<link rel="stylesheet" type="text/css" href="images/common.css"/>
+<script>
+function getQueryString(name) {
+	    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) {
+	        return unescape(r[2]);
+	    }
+	    return null;
+	}
+function load(){
+	var height=window.screen.height;
+	if(height == "568"){
+		//alert("iPhone5");
+		$("#videostate").addClass("iPhone5");
+	}else if(height == "667"){
+		//alert("iPhone6");
+		$("#videostate").addClass("iPhone6");
+	}else if(height == "736"){
+		//alert("iPhone6 Plus");
+		$("#videostate").addClass("iPhone6P");
+	}
+}
+</script>
+  <style type="text/css">
+      .iPhone5{height:517px!important;min-height:517px;}
+      .iPhone6{height:616px!important;min-height:616px;}
+      .iPhone6P{height:685px!important;min-height:685px;}
+   </style>
+</head>
+
+<body onload="load();">
+
+<div data-role="page" data-theme="d">
+  <div data-role="content" style="height:auto!important;min-height:auto;overflow:hidden;">
+   	<!--播放器/代码结束-->
+	<div id="videostate" style="margin:0px;padding:0px;width:100%;overflow:hidden;">
+	<!--播放器/代码开始-->
+		<div class="video" id="HLSPlayer" style="background:#000000; width:100%;height:100%;">
+		<SCRIPT LANGUAGE=JavaScript>
+		var vID        = ""; 
+		var vWidth     = "100%";                //播放器宽度设置
+		var vHeight    = "100%";                   //播放器宽度设置
+		var vPlayer    = "HLSPlayer.swf?v=2.5"; //播放器文件
+		var vHLSset    = "HLS.swf";             //HLS配置
+		var vFile      = "CuSunV2set.xml";
+		var vPic       = "";    //视频缩略图
+		var vCssurl    = "images/mini.css";     //移动端CSS应用文件
+		var date;
+		$.ajax({
+		    type: "post",
+		    async: false,
+		    url: "http://192.168.1.109:8080/LiangZiServer/liveShareId",
+		    dataType: "json",
+		    data:{"liveShareId":getQueryString("live_id")},
+		    success: function(data) {
+		    	date=data.liveHlsPlayUrl;
+		    }
+		});
+		var vHLSurl = date;
+		</SCRIPT> 
+		<script type="text/javascript" src="js/hls.min.js"></script>
+	<!--播放器/代码结束-->
+  </div>
+</div>
+  <div data-role="footer" data-position="fixed" data-theme="b" >
+    <img src="images/background.png"  width="100%" height="46px" >
+  </div>
+</body>
+</html>

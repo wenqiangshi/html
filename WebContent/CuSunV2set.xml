@@ -1,0 +1,41 @@
+﻿<CuPlayer>
+      <Player_Set 
+		JcScpBufferTime = "5"
+ 		JcScpVolume = "75"
+		JcScpCode = "utf8"
+ 		JcScpImgDisplay = "no"
+		JcScpAutoHideControl="no"
+		JcScpControlHideTime="0.5"
+		JcScpShowList= "no"
+		JcScpAutoRepeat = "no"
+		JcScpAutoPlay = "yes"
+		JcScpsetMode = "1"
+		JcScpAFrontCanClose = "yes"
+		JcScpShowRightmenu = "no"
+		JcScpShareMode = "JcScpVideoPath"
+	/>
+      <Logo_Set
+ 		JcScpLogoDisplay = "yes"
+ 		JcScpLogoPath = "images/icon.png"
+ 		JcScpLogoPosition = "top-left"
+		JcScpLogoWidth = "165"
+ 		JcScpLogoHeight = "75"
+ 		JcScpLogoAlpha = "1"
+	/>
+	 <SkinColor_Set
+ 		JcScpBackcolor = "0x000000"
+        JcScpBackcolortop = "0x353535"
+        JcScpLightcolor = "0xcfcfcf"
+        
+        JcScpFontcolor = "0xffffff"
+        JcScptimebg = "0x393939"
+        
+        JcScpLoadbar = "0x00a0e9"
+        JcScpLoaded = "0x4d4b4b"
+        JcScpLoadbg = "0x000000"
+        JcScpPlayBtn = "0x2d2d2d"
+		
+        JcScpBar = "0xffffff" 
+	 />
+</CuPlayer>
+
