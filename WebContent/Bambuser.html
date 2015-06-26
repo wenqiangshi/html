@@ -86,9 +86,11 @@ function load(){
 		    async: false,
 		    url: "http://182.92.106.109/liveShareId",
 		    dataType: "json",
-		    data:{"liveShareId":getQueryString("live_id")},
+		    data:{"liveId":getQueryString("live_id")},
 		    success: function(data) {
-		    	date=data.liveHlsPlayUrl;
+		    	if(data.responseCode=="200"){
+		    		date=data.liveHlsPlayUrl;
+		    	}
 		    }
 		});
 		var vHLSurl = date;
