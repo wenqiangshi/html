@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- 删除默认的苹果工具栏和菜单栏 -->
 <meta name="apple-mobile-web-app-capable" content="no">
 <!-- 在web app应用下状态条（屏幕顶部条）的颜色 -->
@@ -25,36 +26,156 @@ function getQueryString(name) {
 	    }
 	    return null;
 	}
-function load(){
-	var height=window.screen.height;
-	//alert(height);
-	if(height == "568"){
-		$("#videostate").addClass("videostateiPhone5");
-		$("#bgimg").addClass("bgimgiPhone5");
-		$("#download").addClass("downloadiPhone5");
-	}else if(height == "667"){ 
-		//alert("iPhone6");
-		$("#videostate").addClass("videostateiPhone6");
-		$("#bgimg").addClass("bgimgiPhone6");
-		$("#download").addClass("downloadiPhone6");
-	}else if(height == "736"){
-		//alert("iPhone6 Plus");
-		$("#videostate").addClass("videostateiPhone6P");
-		$("#bgimg").addClass("bgimgiPhone6P");
-		$("#download").addClass("downloadiPhone6P");
-	}
-}
+//判断手机横竖屏状态：  
+function hengshuping(){  
+	//alert(window.orientation);
+  if(window.orientation==180||window.orientation==0){  
+	  var height=window.screen.height;
+		if(height == "568"){//320
+			if($("#videostate").hasClass("crossvideostateiPhone5")){
+				$("#videostate").removeClass("crossvideostateiPhone5");
+				$("#videostate").addClass("VerticalvideostateiPhone5");
+			}else{
+				$("#videostate").addClass("VerticalvideostateiPhone5");
+			}
+			if($("#bgimg").hasClass("crossbgimgiPhone5")){
+				$("#bgimg").removeClass("crossbgimgiPhone5");
+				$("#bgimg").addClass("VerticalbgimgiPhone5");
+			}else{
+				$("#bgimg").addClass("VerticalbgimgiPhone5");
+			}
+			if($("#download").hasClass("crossdownloadiPhone5")){
+				$("#download").removeClass("crossdownloadiPhone5");
+				$("#download").addClass("VerticaldownloadiPhone5");
+			}else{
+				$("#download").addClass("VerticaldownloadiPhone5");
+			}
+		}else if(height == "667"){ //375
+			if($("#videostate").hasClass("crossvideostateiPhone6")){
+				$("#videostate").removeClass("crossvideostateiPhone6");
+				$("#videostate").addClass("VerticalvideostateiPhone6");
+			}else{
+				$("#videostate").addClass("VerticalvideostateiPhone6");
+			}
+			if($("#bgimg").hasClass("crossbgimgiPhone6")){
+				$("#bgimg").removeClass("crossbgimgiPhone6");
+				$("#bgimg").addClass("VerticalbgimgiPhone6");
+			}else{
+				$("#bgimg").addClass("VerticalbgimgiPhone6");
+			}
+			if($("#download").hasClass("crossdownloadiPhone6")){
+				$("#download").removeClass("crossdownloadiPhone6");
+				$("#download").addClass("VerticaldownloadiPhone6");
+			}else{
+				$("#download").addClass("VerticaldownloadiPhone6");
+			}
+		}else if(height == "736"){//414
+			if($("#videostate").hasClass("crossvideostateiPhone6P")){
+				$("#videostate").removeClass("crossvideostateiPhone6P");
+				$("#videostate").addClass("VerticalvideostateiPhone6P");
+			}else{
+				$("#videostate").addClass("VerticalvideostateiPhone6P");
+			}
+			if($("#bgimg").hasClass("crossbgimgiPhone6P")){
+				$("#bgimg").removeClass("crossbgimgiPhone6P");
+				$("#bgimg").addClass("VerticalbgimgiPhone6P");
+			}else{
+				$("#bgimg").addClass("VerticalbgimgiPhone6P");
+			}
+			if($("#download").hasClass("crossdownloadiPhone6P")){
+				$("#download").removeClass("crossdownloadiPhone6P");
+				$("#download").addClass("VerticaldownloadiPhone6P");
+			}else{
+				$("#download").addClass("VerticaldownloadiPhone6P");
+			}
+		}
+   }  
+if(window.orientation==90||window.orientation==-90){  
+		var height=window.screen.height;
+		if(height == "568"){//320
+			if($("#videostate").hasClass("VerticalvideostateiPhone5")){
+				$("#videostate").removeClass("VerticalvideostateiPhone5");
+				$("#videostate").addClass("crossvideostateiPhone5");
+			}else{
+				$("#videostate").addClass("crossvideostateiPhone5");
+			}
+			if($("#bgimg").hasClass("VerticalbgimgiPhone5")){
+				$("#bgimg").removeClass("VerticalbgimgiPhone5");
+				$("#bgimg").addClass("crossbgimgiPhone5");
+			}else{
+				$("#bgimg").addClass("crossbgimgiPhone5");
+			}
+			if($("#download").hasClass("VerticaldownloadiPhone5")){
+				$("#download").removeClass("VerticaldownloadiPhone5");
+				$("#download").addClass("crossdownloadiPhone5");
+			}else{
+				$("#download").addClass("crossdownloadiPhone5");
+			}
+		}else if(height == "667"){ //375
+			if($("#videostate").hasClass("VerticalvideostateiPhone6")){
+				$("#videostate").removeClass("VerticalvideostateiPhone6");
+				$("#videostate").addClass("crossvideostateiPhone6");
+			}else{
+				$("#videostate").addClass("crossvideostateiPhone6");
+			}
+			if($("#bgimg").hasClass("VerticalbgimgiPhone6")){
+				$("#bgimg").removeClass("VerticalbgimgiPhone6");
+				$("#bgimg").addClass("crossbgimgiPhone6");
+			}else{
+				$("#bgimg").addClass("crossbgimgiPhone6");
+			}
+			if($("#download").hasClass("VerticaldownloadiPhone6")){
+				$("#download").removeClass("VerticaldownloadiPhone6");
+				$("#download").addClass("crossdownloadiPhone6");
+			}else{
+				$("#download").addClass("crossdownloadiPhone6");
+			}
+		}else if(height == "736"){//414
+			if($("#videostate").hasClass("VerticalvideostateiPhone6P")){
+				$("#videostate").removeClass("VerticalvideostateiPhone6P");
+				$("#videostate").addClass("crossvideostateiPhone6P");
+			}else{
+				$("#videostate").addClass("crossvideostateiPhone6P");
+			}
+			if($("#bgimg").hasClass("VerticalbgimgiPhone6P")){
+				$("#bgimg").removeClass("VerticalbgimgiPhone6P");
+				$("#bgimg").addClass("crossbgimgiPhone6P");
+			}else{
+				$("#bgimg").addClass("crossbgimgiPhone6P");
+			}
+			if($("#download").hasClass("VerticaldownloadiPhone6P")){
+				$("#download").removeClass("VerticaldownloadiPhone6P");
+				$("#download").addClass("crossdownloadiPhone6P");
+			}else{
+				$("#download").addClass("crossdownloadiPhone6P");
+			}
+		}
+    }
+ }  
+window.addEventListener(
+"onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);  
 </script>
   <style type="text/css">
-      .videostateiPhone5{height:455px!important;min-height:455px;}
-      .videostateiPhone6{height:546px!important;min-height:546px;}
-      .videostateiPhone6P{height:607px!important;min-height:607px;}
-      .bgimgiPhone5{height:52px!important;min-height:52px;background-image: url(images/background1.png);}
-      .bgimgiPhone6{height:54px!important;min-height:54px;background-image: url(images/background2.png);}
-      .bgimgiPhone6P{height:62px!important;min-height:62px;background-image: url(images/background3.png);}
-      .downloadiPhone5{height:40px!important;min-height:40px;background-image: url(images/download1.png);padding-top:4px;margin-left:212px;}
-      .downloadiPhone6{height:45px!important;min-height:45px;background-image: url(images/download3.png);padding-top:4px;margin-left:268px;}
-      .downloadiPhone6P{height:50px!important;min-height:50px;background-image: url(images/download3.png);padding-top:4px;margin-left:300px;}
+      .VerticalvideostateiPhone5{height:455px!important;min-height:455px;}
+      .VerticalvideostateiPhone6{height:546px!important;min-height:546px;}
+      .VerticalvideostateiPhone6P{height:607px!important;min-height:607px;}
+      .VerticalbgimgiPhone5{height:52px!important;min-height:52px;background-image: url(images/background1.png);}
+      .VerticalbgimgiPhone6{height:54px!important;min-height:54px;background-image: url(images/background2.png);}
+      .VerticalbgimgiPhone6P{height:62px!important;min-height:62px;background-image: url(images/background3.png);}
+      .VerticaldownloadiPhone5{height:40px!important;min-height:40px;background-image: url(images/download1.png);padding-top:4px;margin-left:212px;}
+      .VerticaldownloadiPhone6{height:45px!important;min-height:45px;background-image: url(images/download3.png);padding-top:4px;margin-left:268px;}
+      .VerticaldownloadiPhone6P{height:50px!important;min-height:50px;background-image: url(images/download3.png);padding-top:4px;margin-left:300px;}
+	  
+	  .crossvideostateiPhone5{height:213px!important;min-height:213px;}
+      .crossvideostateiPhone6{height:267px!important;min-height:267px;}
+      .crossvideostateiPhone6P{height:298px!important;min-height:298px;}
+      .crossbgimgiPhone5{height:52px!important;min-height:52px;background-image: url(images/background1-1.png);background-repeat:no-repeat;}
+      .crossbgimgiPhone6{height:54px!important;min-height:54px;background-image: url(images/background2-2.png);background-repeat:no-repeat;}
+      .crossbgimgiPhone6P{height:62px!important;min-height:62px;background-image: url(images/background3-3.png);background-repeat:no-repeat;}
+      .crossdownloadiPhone5{height:40px!important;min-height:40px;background-image: url(images/download1.png);padding-top:4px;margin-left:462px;}
+      .crossdownloadiPhone6{height:45px!important;min-height:45px;background-image: url(images/download3.png);padding-top:4px;margin-left:558px;}
+      .crossdownloadiPhone6P{height:50px!important;min-height:50px;background-image: url(images/download3.png);padding-top:4px;margin-left:610px;}
+	  
 #bgimg {
  width: 100%;
  position: fixed;
@@ -66,9 +187,9 @@ function load(){
    </style>
 </head>
 
-<body onload="load();" style="overflow-x:hidden;overflow-y:auto;">
+<body onload="hengshuping();" style="overflow-x:hidden;overflow-y:auto;">
 <div data-role="page" data-theme="d">
-  <div data-role="content" style="height:auto!important;min-height:auto;overflow:hidden;">
+   <div data-role="content" style="height:auto!important;min-height:auto;overflow:hidden;">
 	<div id="videostate" style="margin:0px;padding:0px;width:100%;overflow:hidden;">
 		<div class="video" id="HLSPlayer" style="background:#000000; width:100%;height:100%;">
 		<SCRIPT LANGUAGE=JavaScript>
@@ -80,7 +201,7 @@ function load(){
 		var vFile      = "CuSunV2set.xml";
 		var vPic       = "";    //瑙嗛缂╃暐鍥�
 		var vCssurl    = "images/mini.css";     //绉诲姩绔疌SS搴旂敤鏂囦欢
-		var date;
+		var date;/*
 		$.ajax({
 		    type: "post",
 		    async: false,
@@ -92,7 +213,7 @@ function load(){
 		    		date=data.liveHlsPlayUrl;
 		    	}
 		    }
-		});
+		});*/
 		var vHLSurl = date;
 		</SCRIPT> 
 		<script type="text/javascript" src="js/hls.min.js"></script>
