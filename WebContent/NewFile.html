@@ -1,17 +1,77 @@
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<!-- 删除默认的苹果工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-capable" content="no">
+<!-- 在web app应用下状态条（屏幕顶部条）的颜色 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!-- 禁止了把数字转化为拨号链接 -->
+<meta name="format-detection" content="telephone=no">
+<!-- 浏览网站时的小图标 -->
+<link rel="shortcut icon" href="icon.png" type="/image/x-icon">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
 <script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery.mobile-1.4.5.js"></script>
+<script>
+//判断手机横竖屏状态：  
+function hengshuping(){  
+	//alert(window.orientation);
+  if(window.orientation==180||window.orientation==0){  
+	  var height=window.screen.height;
+		if(height == "568"){//320
+			$("#bgimg").attr("src","images/5sbg.png");  
+			$("#bgimg").attr("width","320");
+			$("#bgimg").attr("height","180");
+		}else if(height == "667"){ //375
+			$("#bgimg").attr("src","images/6bg.png");  
+			$("#bgimg").attr("width","375");
+			$("#bgimg").attr("height","211");
+		}else if(height == "736"){//414
+			$("#bgimg").attr("src","images/6pbg.png");  
+			$("#bgimg").attr("width","414");
+			$("#bgimg").attr("height","233");
+		}
+   }  
+if(window.orientation==90||window.orientation==-90){  
+		var height=window.screen.height;
+		if(height == "568"){//320
+			$("#bgimg").attr("src","images/5sbg2.png");  
+			$("#bgimg").attr("width","568");
+			$("#bgimg").attr("height","151");
+		}else if(height == "667"){ //375
+			$("#bgimg").attr("src","images/6bg2.png");  
+			$("#bgimg").attr("width","667");
+			$("#bgimg").attr("height","178");
+		}else if(height == "667"){//414
+			$("#bgimg").attr("src","images/6pbg2.png");  
+			$("#bgimg").attr("width","667");
+			$("#bgimg").attr("height","196");
+		}
+    }
+	var ua = navigator.userAgent.toLowerCase();
+	if (/iphone|ipod/.test(ua)) {
+	    if(/micromessenger/.test(ua)){
+	         document.getElementById("popweixin").style.display = "block";
+	    }else{
+	    	window.location='http://itunes.apple.com/cn/app/id1005430217?mt=8';
+	    }
+	}
+}  
+window.addEventListener(
+"onorientationchange" in window ? "orientationchange" : "resize", hengshuping, false);  
+</script>
 <style>
-	#popweixin {
+#popweixin {
     width:100%;
     height:100%;
     overflow:hidden;
     position:fixed;
     z-index:1000;
-    background:rgba(0,0,0,.5);
+    background:rgba(0,0,0,.1);
     top:0;
     left:0;
     display:none;
@@ -32,46 +92,28 @@
     animation-fill-mode:backwards
 }
 .animate-delay-1 {
-    -webkit-animation-delay:1s;
-    -moz-animation-delay:1s;
-    -o-animation-delay:1s;
-    animation-delay:1s
+    -webkit-animation-delay:0.2s;
+    -moz-animation-delay:0.2s;
+    -o-animation-delay:0.2s;
+    animation-delay:0.2s
 }
 @-webkit-keyframes top2bottom {
     0% {
     -webkit-transform:translateY(-300px);
     opacity:.6
 }
-100% {
-    -webkit-transform:translateY(0px);
-    opacity:1
-}
 }@keyframes top2bottom {
     0% {
     transform:translateY(-300px);
     opacity:.6
 }
-100% {
-    transform:translateY(0px);
-    opacity:1
-}
 </style>
-<script>
-function a(){
-    var ua = navigator.userAgent.toLowerCase();
-    if (/iphone|ipod/.test(ua)) {
-        if(/micromessenger/.test(ua)){
-             document.getElementById("popweixin").style.display = "block";
-        }
-    }
-}
-</script>
 </head>
-<body >
+<body onload="hengshuping();">
 <div id='popweixin'>
-    <div class='tip top2bottom animate-delay-1'>
-        111111111111
+    <div class='tip top2bottom animate-delay-1' >
+    	<img src="" id="bgimg">
     </div>
-</div> 
+</div>
 </body>
 </html>
